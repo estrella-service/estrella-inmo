@@ -1,0 +1,5 @@
+.env
+node_modules
+estrella-service/node_modules
+estrella-service/.env
+estrella-service/dist
