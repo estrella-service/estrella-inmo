@@ -25,6 +25,9 @@ import UserDetail from './components/admin/UserDetail';
 import ReservationForm from './components/ReservationForm';
 import ReservationDetail from './components/admin/ReservationDetail';
 import BookingTable from './components/admin/BookingTable';
+import PrivacyPolicy from './components/AvisoLegal';
+import TermsAndConditions from './components/TermsAndConditions';
+import Footer from './components/Footer';
 function App() {
   return (
     <>
@@ -85,6 +88,14 @@ function App() {
             path='/reservar/:id'
             element={<ReservationForm />}
           />
+          <Route
+            path='/privacy-policy'
+            element={<PrivacyPolicy />}
+          />
+          <Route
+            path='/terms-and-conditions'
+            element={<TermsAndConditions />}
+          />
           {/* Admin Panel Routes */}
           <Route
             path='/admin-panel'
@@ -128,6 +139,7 @@ function App() {
           </Route>
           {/* Admin Panel Routes END */}
         </Routes>
+        <Footer />
       </Router>
     </>
   );
