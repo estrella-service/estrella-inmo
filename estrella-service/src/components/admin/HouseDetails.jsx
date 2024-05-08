@@ -47,7 +47,7 @@ const HouseDetails = () => {
           onClose={() => setIsModalOpen(false)}
         />
       )}
-      <h1 className='font-cinzel text-2xl mb-1 mt-1'>
+      <h1 className='font-cinzel text-lg md:text-4xl mb-1 mt-3'>
         Lista de las Propiedades
       </h1>
       <div className=' w-full flex flex-col items-start justify-center gap-2 p-2'>
@@ -55,21 +55,21 @@ const HouseDetails = () => {
           <div
             key={currentHouse._id}
             className='w-full flex flex-col border border-gray-700 gap-2 p-2 rounded-lg'>
-            <div className='flex w-full items-center justify-between gap-2  text-xl font-cinzel font-bold'>
-              <div className='flex items-center justify-center'>
-                <h1>{currentHouse.title}</h1>-
-                <p className=''>
-                  {currentHouse.owner === null
-                    ? 'Pedro Picapiedra'
-                    : currentHouse.owner.name}
-                </p>
-                <p className=''>
-                  {currentHouse.owner === null
-                    ? 'Pedro Picapiedra'
-                    : currentHouse.owner.surname}
-                </p>
-                -{' '}
-                <p className=''>
+            <div className='flex md:flex-row flex-col w-full items-center justify-between gap-2  text-xl font-cinzel font-bold'>
+              <div className='flex   flex-col items-center justify-center'>
+                <h1 className='text-sm font-serif md:text-xl'>
+                  {currentHouse.title}
+                </h1>
+                <div className='flex items-center'>
+                  <p className='text-sm font-serif md:text-xl'>
+                    {currentHouse.owner.name}
+                  </p>
+                  <p className='text-sm font-serif md:text-xl'>
+                    {currentHouse.owner.surname}
+                  </p>
+                </div>
+
+                <p className='text-sm font-serif md:text-xl'>
                   Cantidad de reservas: {currentHouse.reservasId.length}
                 </p>
               </div>
@@ -102,12 +102,12 @@ const HouseDetails = () => {
 
             <hr className='w-full border-1 border-gray-600 mt-2 mb-2' />
             <p className='text-xl font-cinzel font-bold'>Descripcion corta:</p>
-            <p className='flex items-center gap-2 text-xl font-serif'>
+            <p className='flex items-center gap-2 md:text-xl text-md font-serif'>
               {currentHouse?.shortDescription}
             </p>
             <hr className='w-full border-1 border-gray-600 mt-2 mb-2' />
             <p className='text-xl font-cinzel font-bold'>Descripcion:</p>
-            <p className='flex items-center gap-2 text-xl font-serif'>
+            <p className='flex items-center gap-2 md:text-xl text-md font-serif'>
               {currentHouse.description}
             </p>
             <hr className='w-full border-1 border-gray-600 mt-2 mb-2' />

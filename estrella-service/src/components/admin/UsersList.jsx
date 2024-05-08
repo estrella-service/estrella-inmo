@@ -31,7 +31,7 @@ const UserList = () => {
                 key={client._id}
                 className='w-full flex md:flex-row flex-col items-center border border-gray-700 gap-2 p-2 rounded-lg'>
                 <div
-                  className='flex flex-col w-full md:justify-normal justify-startitems-center gap-2 text-sm
+                  className='flex flex-col w-full md:justify-normal  gap-2 text-sm
                md:text-xl font-cinzel font-bold'>
                   <div className='flex items-center gap-1'>
                     <h1 className=''>{client.name}</h1>
@@ -68,7 +68,7 @@ const UserList = () => {
                 key={client._id}
                 className='w-full flex md:flex-row flex-col items-center border border-gray-700 gap-2 p-2 rounded-lg'>
                 <div
-                  className='flex flex-col w-full md:justify-normal justify-startitems-center gap-2 text-sm
+                  className='flex flex-col w-full md:justify-normal gap-2 text-sm
                md:text-xl font-cinzel font-bold'>
                   <div className='flex items-center gap-1'>
                     <h1 className=''>{client.name}</h1>
