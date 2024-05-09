@@ -76,14 +76,7 @@ function App() {
             path='/property/:id'
             element={<PropertyPage />}
           />
-          <Route
-            path='/login'
-            element={<LoginPage />}
-          />
-          <Route
-            path='/register'
-            element={<RegisterPage />}
-          />
+
           <Route
             path='/reservar/:id'
             element={<ReservationForm />}

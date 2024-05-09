@@ -31,6 +31,7 @@ import Seasson from '../components/Seasson';
 
 const PropertyPage = () => {
   const { currentHouse, getCurrentHouse } = useHouses();
+
   console.log(currentHouse);
   const { id } = useParams();
   console.log(id);

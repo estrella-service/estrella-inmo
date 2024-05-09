@@ -1,11 +1,11 @@
 import estrellaLogo from '../assets/estrellaLogo.png';
-import espFlag from '../assets/espFlag.png';
 
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/user-context';
 import { useState } from 'react';
 import clsx from 'clsx';
+import LoginPageModal from '../pages/LoginPage';
 
 const Navbar = () => {
   //TODO: Add the name and surname of user in the navbar
@@ -13,6 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false); // Estado para el menú desplegable móvil
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -22,6 +23,10 @@ const Navbar = () => {
   };
   return (
     <>
+      <LoginPageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       <nav
         className='w-full md:flex items-center justify-between p-3 gap-3 bg-[#0e2235] border-b-2 border-gray-300 hidden  
       sticky top-0 right-0 z-10 '>
@@ -47,15 +52,13 @@ const Navbar = () => {
         <div className='flex flex-col items-center justify-center gap-3 z-20'>
           <div className='flex items-center justify-end gap-3 w-full'>
             {!isAuthenticated ? (
-              <Link to='/login'>
-                <button>
-                  <p
-                    className='text-gray-200  text-sm py-1 px-2 rounded-md 
+              <button onClick={() => setIsModalOpen(true)}>
+                <p
+                  className='text-gray-200  text-sm py-1 px-2 rounded-md 
                  hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
-                    SignIn
-                  </p>
-                </button>
-              </Link>
+                  SignIn
+                </p>
+              </button>
             ) : (
               <>
                 {' '}
@@ -63,7 +66,12 @@ const Navbar = () => {
                   Bienvenido: <em> {user.name}</em>
                 </p>
                 <Link to='/'>
-                  <button onClick={logOut}>
+                  <button
+                    onClick={() => {
+                      logOut();
+                      setIsOpen(false);
+                      navigate('/');
+                    }}>
                     <p
                       className='text-gray-200  text-sm py-1 px-2 rounded-md 
                  hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
@@ -321,7 +329,7 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     toggleMenu();
-                    navigate('/login');
+                    setIsModalOpen(true);
                   }}
                   className='text-gray-200 block w-full text-left px-3 py-2 rounded-md text-base font-medium'>
                   SingIn
@@ -332,7 +340,11 @@ const Navbar = () => {
             {isAuthenticated && (
               <>
                 <button
-                  onClick={logOut}
+                  onClick={() => {
+                    logOut();
+                    toggleMenu();
+                    navigate('/');
+                  }}
                   className='text-gray-200 block w-full text-left px-3 py-2 rounded-md text-base font-medium'>
                   LogOut
                 </button>

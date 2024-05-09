@@ -32,7 +32,7 @@ const Contact = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className=' h-screen grid grid-cols-12 items-center justify-center gap-4  w-full py-4 px-10 mt-2'>
+      <div className='grid grid-cols-12 items-center justify-center gap-4  w-full py-4 px-10 mt-2'>
         <div className=' col-span-12 md:col-span-8 h-full'>
           <article className='w-full flex flex-col items-start justify-center'>
             <h1 className=' font-cinzel text-gray-800 text-3xl'>
