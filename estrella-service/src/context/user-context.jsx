@@ -6,6 +6,7 @@ import {
   verifyTokenRequest,
   getAllClientsRequest,
   logOutRequest,
+  editCurrentUserRequest,
 } from '../api/auth';
 import { useHouses } from './houses-context';
 
@@ -116,6 +117,17 @@ export const UserProvider = ({ children }) => {
     console.log(client);
     setCurrentClient(client);
   };
+  const editCurrentUser = async (values) => {
+    try {
+      const response = await editCurrentUserRequest(values);
+      console.log(response.data, 'response .data del editCurrentUser');
+      await getAllClients();
+      return response;
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors([error.response.data]);
+    }
+  };
   return (
     <UserContext.Provider
       value={{
@@ -131,6 +143,7 @@ export const UserProvider = ({ children }) => {
         currentClient,
         setAllClients,
         setCurrentClient,
+        editCurrentUser,
       }}>
       {children}
     </UserContext.Provider>

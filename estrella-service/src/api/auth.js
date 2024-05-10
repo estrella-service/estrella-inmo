@@ -11,3 +11,6 @@ export const updateUser = (id, user) => axios.patch(`/users/${id}`, user);
 export const logOutRequest = (id) => axios.post('/users/logout', id);
 
 export const getAllClientsRequest = () => axios.get('/users');
+
+export const editCurrentUserRequest = (user) =>
+  axios.patch(`/users/edit/${user._id}`, user);

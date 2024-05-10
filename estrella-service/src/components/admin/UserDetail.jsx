@@ -1,15 +1,36 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/user-context';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const UserDetail = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const { id } = useParams();
-  const { getCurrentClient, currentClient } = useUser();
+  const { getCurrentClient, currentClient, editCurrentUser } = useUser();
   console.log(currentClient);
   useEffect(() => {
     getCurrentClient(id);
   }, [id]);
-  const handleUserAdmin = async () => {};
+  const handleUserAdmin = async () => {
+    setLoading(true);
+    const userData = { ...currentClient, isAdmin: !currentClient.isAdmin };
+    console.log(userData);
+    try {
+      const response = await editCurrentUser(userData);
+      console.log(response);
+      if (response.status === 200) {
+        setLoading(false);
+        getCurrentClient(id);
+        navigate('/admin-panel/guests');
+        toast.success('Usuario actualizado correctamente');
+      }
+    } catch (error) {
+      toast.error('Error al actualizar el usuario');
+      setLoading(false);
+    }
+  };
   return (
     <div className='flex flex-col items-center justify-center gap-2 w-full'>
       {currentClient && (
@@ -48,7 +69,7 @@ const UserDetail = () => {
                       {currentClient.phone}
                     </dd>
                   </div>
-                  <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 items-center'>
                     <dt className='text-sm font-medium text-gray-500'>
                       Administrador
                     </dt>
@@ -56,8 +77,9 @@ const UserDetail = () => {
                       <p> {currentClient.isAdmin ? 'Sí' : 'No'}</p>
                       <button
                         onClick={handleUserAdmin}
+                        disabled={loading}
                         className='bg-[#0e2235] text-white 
-            py-2 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
+            py-1 px-3 flex items-center gap-3 rounded-md w-full md:w-fit self-end text-md'>
                         {currentClient.isAdmin ? 'Quitar Admin' : 'Hacer Admin'}
                       </button>
                     </dd>
@@ -69,7 +91,9 @@ const UserDetail = () => {
             <div className='bg-white shadow overflow-hidden sm:rounded-lg'>
               <div className='px-4 py-5 sm:px-6'>
                 <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  Reservas
+                  {currentClient.reservasId.length === 0
+                    ? 'No hay reservas'
+                    : 'Reservas'}
                 </h3>
               </div>
               <div className='border-t border-gray-200'>

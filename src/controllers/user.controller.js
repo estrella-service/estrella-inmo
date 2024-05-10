@@ -140,3 +140,25 @@ export const getAllClients = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener los usuarios' });
   }
 };
+export const editCurrentUser = async (req, res) => {
+  const { id } = req.params;
+
+  const { isAdmin } = req.body;
+  console.log(req.body, 'req.body from editCurrentUser');
+  console.log(isAdmin, 'isAdmin++++++++++++++++++++++');
+
+  try {
+    const userFound = await User.findByIdAndUpdate(
+      { _id: id },
+      { isAdmin: isAdmin },
+      {
+        new: true,
+      }
+    );
+    console.log(userFound, 'userFound');
+    if (!userFound) return res.status(400).json(['User not found']);
+    res.status(200).json(userFound);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al editar el usuario', error });
+  }
+};

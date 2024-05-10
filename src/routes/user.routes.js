@@ -6,6 +6,7 @@ import {
   registerNewUser,
   verifyToken,
   getAllClients,
+  editCurrentUser,
 } from '../controllers/user.controller.js';
 import { loginSchema, registerSchema } from '../schemas/user.schema.js';
 
@@ -20,5 +21,7 @@ router.post('/logout', logout);
 router.post('/verify', verifyToken);
 
 router.get('/', getAllClients);
+
+router.patch('/edit/:id', editCurrentUser);
 
 export default router;
