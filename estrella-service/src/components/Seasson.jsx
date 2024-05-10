@@ -3,11 +3,11 @@ import React from 'react';
 const Seasson = ({ priceLow, priceMedium, priceHigh }) => {
   return (
     <div className='w-full flex flex-col items-center justify-center p-2 mt-4 border border-gray-400 rounded-md '>
-      <h2 className='text-start w-full text-2xl font-serif text-gray-800'>
+      <h2 className='text-start w-full text-xl md:text-2xl font-serif text-gray-800'>
         <em>Estancia y Precios:</em>
       </h2>
       <hr className='w-full border border-gray-700' />
-      <p className='w-full text-start mt-4'>
+      <p className='w-full text-start font-serif text-lg mt-4'>
         <em>Temporada:</em>
       </p>
       <ul className='w-full md:pl-6 md:pr-6 mt-2'>
@@ -31,13 +31,10 @@ const Seasson = ({ priceLow, priceMedium, priceHigh }) => {
           <em>Noviembre - Marzo</em>
         </li>
       </ul>
-      <h2 className='text-center w-full text-2xl font-serif text-gray-800'>
+      <hr className='w-full border-1 border-gray-600' />
+      <h2 className='text-center w-full text-sm md:text-2xl font-serif text-gray-800 mt-2'>
         <em>La Estancia Minima es de una semana</em>
       </h2>
-      <hr className='w-full border border-gray-700' />
-      <p className='w-full text-center mt-4'>
-        <em></em>
-      </p>
     </div>
   );
 };

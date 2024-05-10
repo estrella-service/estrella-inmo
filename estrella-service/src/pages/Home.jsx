@@ -13,11 +13,11 @@ const Home = () => {
         <section className='grid grid-cols-12 items-center justify-center gap-4  w-full py-4 px-10 mt-2'>
           <div className='col-span-12 md:col-span-8 h-full w-full'>
             <article className='w-full flex flex-col items-start justify-center'>
-              <h1 className=' font-cinzel text-gray-800 text-3xl'>
+              <h1 className=' font-cinzel text-gray-800 text-xl md:text-3xl'>
                 Estrella Service - Holiday Villas & Apartments
               </h1>
               <hr className='w-full border border-gray-700' />
-              <h2 className='w-full mt-6 text-2xl font text-gray-600'>
+              <h2 className='w-full mt-6 text-lg md:text-2xl font text-gray-600'>
                 <em>
                   Si está buscando una villa o apartamento de vacaciones de
                   calidad en Calpe, Moraira o Benissa en la Costa del Sol, ha

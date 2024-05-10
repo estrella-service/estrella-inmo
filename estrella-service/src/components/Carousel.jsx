@@ -12,7 +12,7 @@ const CarouselComponent = () => {
   const navigate = useNavigate();
   return (
     <Carousel
-      className='w-[70%] '
+      className='md:w-[70%] w-full'
       infiniteLoop
       stopOnHover
       autoPlay

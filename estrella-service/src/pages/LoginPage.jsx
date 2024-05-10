@@ -138,7 +138,7 @@ const LoginPageModal = ({ isOpen, onClose }) => {
                  hover:bg-indigo-500 
                  focus-visible:outline 
                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                    Sign in
+                    Log In
                   </button>
                   <div className='flex gap-2 mt-2 text-center text-black md:text-md text-sm'>
                     <p>If you are not Registered go to </p>
@@ -293,7 +293,7 @@ const LoginPageModal = ({ isOpen, onClose }) => {
                  hover:bg-indigo-500 
                  focus-visible:outline 
                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                    Sign in
+                    Register
                   </button>
                   <div className='flex mt-2 text-center text-black gap-2 md:text-md text-sm'>
                     <p>If you are Registered go to </p>

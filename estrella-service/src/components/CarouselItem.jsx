@@ -7,7 +7,7 @@ const CarouselItem = () => {
 
   return (
     <Carousel
-      className='w-[70%] '
+      className='w-full md:w-[70%] '
       infiniteLoop
       stopOnHover
       autoPlay
