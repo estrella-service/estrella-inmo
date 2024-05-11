@@ -4,11 +4,10 @@
 @tailwind utilities;
 
 body,
-main,
-:root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 @layer base {
   :root {

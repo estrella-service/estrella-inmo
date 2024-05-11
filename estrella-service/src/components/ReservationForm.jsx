@@ -388,6 +388,8 @@ const ReservationForm = () => {
                     })}
                     id='guests'
                     name='guests'
+                    max={currentHouse?.huespedes}
+                    min={1}
                     type='number'
                     required
                     className='block w-full rounded-md border-0 
@@ -495,9 +497,7 @@ const ReservationForm = () => {
                   placeholder='Añada un comentario a su solicitud'
                   name='comentarios'
                   id='comentarios'
-                  {...register('comentarios', {
-                    required: true,
-                  })}></textarea>
+                  {...register('comentarios')}></textarea>
                 {errors.comentarios && <span>This field is required</span>}
               </div>
             </div>

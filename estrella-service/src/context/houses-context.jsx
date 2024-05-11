@@ -8,6 +8,7 @@ import {
 } from '../api/properties';
 import {
   createNewReservationRequest,
+  createReservationByAdminRequest,
   editReservationDatesRequest,
   editReservationRequest,
   getAllReservationsRequest,
@@ -158,10 +159,23 @@ export const HousesProvider = ({ children }) => {
       setErrors([error]);
     }
   };
+  const createNewReservationAdmin = async (data) => {
+    try {
+      const response = await createReservationByAdminRequest(data);
+      console.log(response, 'response  del Create New Propertie');
+      await fetchAllHouses();
+      await getAllReservations();
+      return response;
+    } catch (error) {
+      console.log(error);
+      setErrors([error]);
+    }
+  };
 
   return (
     <HousesContext.Provider
       value={{
+        createNewReservationAdmin,
         houses,
         editReservation,
         setHouses,

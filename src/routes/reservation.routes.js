@@ -4,6 +4,7 @@ import {
   createNewReservation,
   editReservation,
   editReservationDates,
+  createNewReservationByAdmin,
 } from '../controllers/reservation.controller.js';
 
 const router = Router();
@@ -11,6 +12,8 @@ const router = Router();
 router.get('/all-reservations', getAllReservations);
 
 router.post(`/new-reservation`, createNewReservation);
+
+router.post('/new-reservation-admin', createNewReservationByAdmin);
 
 router.post('/edit-reservation/:id', editReservation);
 

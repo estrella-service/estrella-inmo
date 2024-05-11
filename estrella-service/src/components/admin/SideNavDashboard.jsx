@@ -22,9 +22,9 @@ const navlinks = [
 const SideNavDashbord = () => {
   const [open, setOpen] = useState(false);
   return (
-    <section className='h-full '>
+    <section className=' h-full'>
       <div
-        className={`bg-blue-gray-100 md:h-[86vh] h-screen flex flex-grow ${
+        className={`bg-blue-gray-100 h-screen flex flex-grow ${
           open ? 'w-[200px]' : 'md:w-[80px] w-[50px]'
         } duration-200 pl-4 text-[#003A70] font-bold py- flex flex-col w-1/5  relative bg-gray-100`}>
         <div

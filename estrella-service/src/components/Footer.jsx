@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <>
       {!isAdminPage && (
-        <div className='w-full h-[50px] bg-[#0e2235] text-white flex justify-between items-center text-sm p-3 mt-auto footer z-10'>
+        <div className='footer w-full h-[50px] bg-[#0e2235] text-white flex justify-between items-center text-sm p-3  mt-auto footer z-10'>
           <p className='text-center md:text-sm text-[10px]'>
             Copyright © Estrella Service
           </p>

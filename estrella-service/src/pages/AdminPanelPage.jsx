@@ -14,25 +14,21 @@ const AdminPanelPage = () => {
     }
   }, [user]);
   return (
-    <>
-      <div className='flex  '>
-        <div
-          style={{
-            position: 'fixed ',
-            height: '100vh',
-            backgroundColor: 'rgb(243 244 246)',
-          }}>
-          <SideNavDashboard />
-        </div>
-        <main
-          className='flex items-start w-full justify-center overflow-auto ml-[50px] md:ml-[80px]'
-          style={{
-            height: '100vh',
-          }}>
-          <Outlet />
-        </main>
+    <div className='flex overflow-hidden'>
+      <div
+        style={{
+          position: 'fixed ',
+
+          backgroundColor: 'rgb(243 244 246)',
+        }}>
+        <SideNavDashboard />
       </div>
-    </>
+      <main
+        className='flex items-start w-full justify-center overflow-auto ml-[50px] md:ml-[80px]'
+        style={{}}>
+        <Outlet />
+      </main>
+    </div>
   );
 };
 

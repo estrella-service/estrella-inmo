@@ -96,7 +96,7 @@ export const UserProvider = ({ children }) => {
         setLoading(false);
       } catch (error) {
         console.log(error.response.data);
-        setErrors([error.response.data.message]);
+
         setLoading(false);
       }
     };
