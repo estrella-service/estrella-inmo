@@ -74,7 +74,7 @@ const PropertyPage = () => {
               <p className='text-lg md:text-xl font-cinzel font-bold'>
                 Caracteristicas
               </p>
-              <div className='w-full flex md:flex-wrap flex-col md:justify-start items-center '>
+              <div className='w-full flex flex-col items-start md:grid md:grid-cols-2 lg:grid-cols-3  md:items-center '>
                 <p className='flex items-center gap-2 text-sm md:text-xl p-2 md:p-8'>
                   <GiResize size={30} />
                   {currentHouse.mts2} mts2
