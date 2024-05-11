@@ -11,8 +11,7 @@ import MorairaPage from './pages/MorairaPage';
 import PropietariosPage from './pages/PropietariosPage';
 import Details from './components/Details';
 import PropertyPage from './pages/PropertyPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+
 import AdminPanelPage from './pages/AdminPanelPage';
 import DashBoradMain from './components/admin/DashboardMain';
 import PropertyList from './components/admin/PropertyList';
@@ -28,6 +27,7 @@ import BookingTable from './components/admin/BookingTable';
 import PrivacyPolicy from './components/AvisoLegal';
 import TermsAndConditions from './components/TermsAndConditions';
 import Footer from './components/Footer';
+
 function App() {
   return (
     <>
@@ -38,6 +38,7 @@ function App() {
           position='top-right'
           richColors
         />
+
         <Details />
         <Routes>
           <Route

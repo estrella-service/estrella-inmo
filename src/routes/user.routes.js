@@ -7,6 +7,7 @@ import {
   verifyToken,
   getAllClients,
   editCurrentUser,
+  editPasswordByEmail,
 } from '../controllers/user.controller.js';
 import { loginSchema, registerSchema } from '../schemas/user.schema.js';
 
@@ -23,5 +24,7 @@ router.post('/verify', verifyToken);
 router.get('/', getAllClients);
 
 router.patch('/edit/:id', editCurrentUser);
+
+router.post('/forgot-password', editPasswordByEmail);
 
 export default router;

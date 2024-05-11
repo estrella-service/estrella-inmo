@@ -2,6 +2,7 @@ import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import { generateTokenAccess } from '../libs/jsonwebtoken.js';
 import jwt from 'jsonwebtoken';
+import { sendNewPassword } from '../libs/mailing.js';
 
 export const registerNewUser = async (req, res) => {
   const { name, surname, email, password } = req.body;
@@ -160,5 +161,34 @@ export const editCurrentUser = async (req, res) => {
     res.status(200).json(userFound);
   } catch (error) {
     res.status(500).json({ message: 'Error al editar el usuario', error });
+  }
+};
+
+export const editPasswordByEmail = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const userFound = await User.findOne({ email });
+    if (!userFound) return res.status(400).json(['User not found']);
+    const newPassword = Math.floor(10000000 + Math.random() * 90000000);
+    console.log(newPassword);
+    const passwordHash = await bcrypt.hash(newPassword.toString(), 10);
+
+    const userUpdated = await User.findByIdAndUpdate(
+      { _id: userFound._id },
+      { password: passwordHash },
+      {
+        new: true,
+      }
+    );
+    console.log(userUpdated, 'userUpdated');
+    await sendNewPassword(userUpdated.email, newPassword.toString());
+
+    res.status(200).json({
+      message: 'Password updated successfully',
+    });
+  } catch (error) {
+    console.log(error, 'error');
+    res.status(500).json({ message: 'Error updating password', error });
   }
 };

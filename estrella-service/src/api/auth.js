@@ -14,3 +14,6 @@ export const getAllClientsRequest = () => axios.get('/users');
 
 export const editCurrentUserRequest = (user) =>
   axios.patch(`/users/edit/${user._id}`, user);
+
+export const editPasswordRequest = (email) =>
+  axios.post(`/users/forgot-password`, email);

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from '../../node_modules/react-router-dom/dist/index';
+
 import { useLocation } from 'react-router-dom';
+import { useModal } from '../hooks/use-modal-store';
 
 const Footer = () => {
   const location = useLocation();
   const [isAdminPage, setIsAdminPage] = useState(false);
+  const { onOpen } = useModal();
 
   useEffect(() => {
     const isAdminRoute = location.pathname.includes('/admin-panel');
@@ -19,16 +21,16 @@ const Footer = () => {
             Copyright © Estrella Service
           </p>
           <div className='flex gap-3 items-center'>
-            <Link
-              to='/terms-and-conditions'
+            <p
+              onClick={() => onOpen('terms-and-conditions')}
               className='text-white md:text-sm text-[10px]'>
               Terms and Conditions
-            </Link>
-            <Link
-              to='/privacy-policy'
+            </p>
+            <p
+              onClick={() => onOpen('aviso-legal')}
               className='text-white md:text-sm text-[10px]'>
               Privacy Policy
-            </Link>
+            </p>
           </div>
         </div>
       )}

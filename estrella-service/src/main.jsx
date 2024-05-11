@@ -6,11 +6,9 @@ import { UserProvider } from './context/user-context.jsx';
 import { HousesProvider } from './context/houses-context';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HousesProvider>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </HousesProvider>
-  </React.StrictMode>
+  <HousesProvider>
+    <UserProvider>
+      <App />
+    </UserProvider>
+  </HousesProvider>
 );

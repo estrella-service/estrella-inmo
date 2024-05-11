@@ -97,6 +97,11 @@ const LoginPageModal = ({ isOpen, onClose }) => {
                       className='block text-sm font-medium leading-6 text-gray-900'>
                       Contraseña
                     </label>
+                    <div
+                      className='text-sm  text-indigo-500 underline'
+                      onClick={() => {}}>
+                      Olvidaste tu contraseña?
+                    </div>
                     <div className='text-sm'></div>
                   </div>
                   <div className='mt-2 relative'>

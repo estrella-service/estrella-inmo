@@ -5,15 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/user-context';
 import { useState } from 'react';
 import clsx from 'clsx';
-import LoginPageModal from '../pages/LoginPage';
+
+import { useModal } from '../hooks/use-modal-store';
 
 const Navbar = () => {
   //TODO: Add the name and surname of user in the navbar
   const { isAuthenticated, logOut, user } = useUser();
+  const { onOpen } = useModal();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false); // Estado para el menú desplegable móvil
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -23,10 +24,6 @@ const Navbar = () => {
   };
   return (
     <>
-      <LoginPageModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
       <nav
         className='w-full md:flex items-center justify-between p-3 gap-3 bg-[#0e2235] border-b-2 border-gray-300 hidden  
       sticky top-0 right-0 z-10 '>
@@ -52,7 +49,7 @@ const Navbar = () => {
         <div className='flex flex-col items-center justify-center gap-3 z-20'>
           <div className='flex items-center justify-end gap-3 w-full'>
             {!isAuthenticated ? (
-              <button onClick={() => setIsModalOpen(true)}>
+              <button onClick={() => onOpen('login-form')}>
                 <p
                   className='text-gray-200  text-sm py-1 px-2 rounded-md 
                  hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
@@ -329,7 +326,7 @@ const Navbar = () => {
                 <button
                   onClick={() => {
                     toggleMenu();
-                    setIsModalOpen(true);
+                    onOpen('login-form');
                   }}
                   className='text-gray-200 block w-full text-left px-3 py-2 rounded-md text-base font-medium'>
                   SingIn

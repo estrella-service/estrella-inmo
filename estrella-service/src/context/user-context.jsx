@@ -7,6 +7,7 @@ import {
   getAllClientsRequest,
   logOutRequest,
   editCurrentUserRequest,
+  editPasswordRequest,
 } from '../api/auth';
 import { useHouses } from './houses-context';
 
@@ -50,6 +51,7 @@ export const UserProvider = ({ children }) => {
       setIsAuthenticated(true);
       if (response.data.isAdmin) {
         await getAllClients();
+        await getAllReservations();
       }
       setLoading(false);
     } catch (error) {
@@ -117,11 +119,25 @@ export const UserProvider = ({ children }) => {
     console.log(client);
     setCurrentClient(client);
   };
+
+  // EDIT CLIENT NEW CONTENT TO TRY BY PASS TO PRODUCCTION WEB
   const editCurrentUser = async (values) => {
     try {
       const response = await editCurrentUserRequest(values);
       console.log(response.data, 'response .data del editCurrentUser');
       await getAllClients();
+      return response;
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors([error.response.data]);
+    }
+  };
+
+  const editPassword = async (values) => {
+    try {
+      const response = await editPasswordRequest(values);
+      console.log(response.data, 'response .data del editCurrentUser');
+
       return response;
     } catch (error) {
       console.log(error.response.data);
@@ -144,6 +160,7 @@ export const UserProvider = ({ children }) => {
         setAllClients,
         setCurrentClient,
         editCurrentUser,
+        editPassword,
       }}>
       {children}
     </UserContext.Provider>
