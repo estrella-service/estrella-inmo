@@ -7,7 +7,10 @@ const Details = () => {
   const [isAdminPage, setIsAdminPage] = useState(false);
 
   useEffect(() => {
-    const isAdminRoute = location.pathname.includes('/admin-panel');
+    const isAdminRoute =
+      location.pathname.includes('/admin-panel') ||
+      location.pathname.includes('/profile-panel');
+
     setIsAdminPage(isAdminRoute);
   }, [location]);
 

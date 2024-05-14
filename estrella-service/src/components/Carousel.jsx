@@ -8,7 +8,7 @@ import { useHouses } from '../context/houses-context';
 
 const CarouselComponent = () => {
   const { houses, getCurrentHouse } = useHouses();
-  console.log(houses, 'houses');
+
   const navigate = useNavigate();
   return (
     <>

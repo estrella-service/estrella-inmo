@@ -44,7 +44,14 @@ export const registerNewUser = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const userFound = await User.findOne({ email });
+    const userFound = await User.findOne({ email })
+      .populate({
+        path: 'reservasId',
+        populate: {
+          path: 'houseId',
+        },
+      })
+      .populate('propertysId');
     if (!userFound)
       return res.status(400).json({ message: 'Usuario no encontrado' });
 
@@ -69,6 +76,7 @@ export const login = async (req, res) => {
       isAdmin: userFound.isAdmin,
       reservasId: userFound.reservasId,
       createdAt: userFound.createdAt,
+      propertysId: userFound.propertysId,
 
       message: 'Usuario registrado correctamente',
     });
@@ -92,7 +100,14 @@ export const verifyToken = async (req, res) => {
   jwt.verify(token, process.env.TOKEN_SECRET, async (err, user) => {
     if (err) return res.status(401).json({ message: 'Unauthoriced' });
 
-    const userFound = await User.findById(user.id);
+    const userFound = await User.findById(user.id)
+      .populate({
+        path: 'reservasId',
+        populate: {
+          path: 'houseId',
+        },
+      })
+      .populate('propertysId');
     if (!userFound)
       return res.status(400).json({ message: 'Usuario no encontrado' });
 
@@ -103,6 +118,7 @@ export const verifyToken = async (req, res) => {
       surname: userFound.surname,
       isAdmin: userFound.isAdmin,
       reservasId: userFound.reservasId,
+      propertysId: userFound.propertysId,
     });
   });
 };
@@ -110,7 +126,14 @@ export const logInWithToken = async (req, res) => {
   const { id } = req.user;
   console.log(req.user, '<--- req.user');
   try {
-    const userFound = await User.findById(id);
+    const userFound = await User.findById(id)
+      .populate({
+        path: 'reservasId',
+        populate: {
+          path: 'houseId',
+        },
+      })
+      .populate('propertysId');
     if (!userFound) {
       return res.status(400).send('User not found');
     }
@@ -123,6 +146,7 @@ export const logInWithToken = async (req, res) => {
       surname: userFound.surname,
       isAdmin: userFound.isAdmin,
       reservasId: userFound.reservasId,
+      propertysId: userFound.propertysId,
     });
   } catch (error) {
     console.error(error, '[LOG IN WITH TOKEN ERROR]');
@@ -190,5 +214,49 @@ export const editPasswordByEmail = async (req, res) => {
   } catch (error) {
     console.log(error, 'error');
     res.status(500).json({ message: 'Error updating password', error });
+  }
+};
+
+export const resetPassworById = async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+  console.log(id, 'id');
+  console.log(password, 'password');
+
+  try {
+    const passwordHash = await bcrypt.hash(password, 10);
+    const userFound = await User.findByIdAndUpdate(
+      { _id: id },
+      { password: passwordHash },
+      { new: true }
+    );
+    console.log(userFound, 'userFound');
+    if (!userFound) return res.status(400).json(['User not found']);
+
+    res.status(200).json({
+      message: 'Password updated successfully',
+    });
+  } catch (error) {
+    console.log(error, 'error');
+    res.status(500).json({ message: 'Error updating password', error });
+  }
+};
+
+export const editUserById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const userFound = await User.findByIdAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
+    console.log(userFound, 'userFound');
+    if (!userFound) return res.status(400).json(['User not found']);
+
+    res.status(200).json({
+      message: 'Usuario actualizado correctamente',
+    });
+  } catch (error) {
+    console.log(error, 'error');
+    res.status(500).json({ message: 'Error actualizando usuario', error });
   }
 };

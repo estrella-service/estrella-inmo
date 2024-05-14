@@ -17,3 +17,9 @@ export const editCurrentUserRequest = (user) =>
 
 export const editPasswordRequest = (email) =>
   axios.post(`/users/forgot-password`, email);
+
+export const resetPasswordRequest = (password, id) =>
+  axios.patch(`/users/reset-password/${id}`, { password });
+
+export const editUserByIdRequest = (id, data) =>
+  axios.patch(`/users/edit-user/${id}`, data);

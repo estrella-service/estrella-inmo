@@ -8,6 +8,8 @@ import {
   logOutRequest,
   editCurrentUserRequest,
   editPasswordRequest,
+  resetPasswordRequest,
+  editUserByIdRequest,
 } from '../api/auth';
 import { useHouses } from './houses-context';
 
@@ -87,11 +89,12 @@ export const UserProvider = ({ children }) => {
           setUser(null);
           return;
         }
-        setUser(response.data);
+
         if (response.data.isAdmin) {
           await getAllClients();
           await getAllReservations();
         }
+        setUser(response.data);
         setIsAuthenticated(true);
         setLoading(false);
       } catch (error) {
@@ -144,9 +147,36 @@ export const UserProvider = ({ children }) => {
       setErrors([error.response.data]);
     }
   };
+
+  const resetPassword = async (password, id) => {
+    console.log(password, id, 'password, id');
+    try {
+      const response = await resetPasswordRequest(password, id);
+      console.log(response.data, 'response .data del editCurrentUser');
+
+      return response;
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors([error.response.data]);
+    }
+  };
+
+  const editUserById = async (id, data) => {
+    try {
+      const response = await editUserByIdRequest(id, data);
+      console.log(response.data, 'response .data del editCurrentUser');
+      return response;
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors([error.response.data]);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
+        resetPassword,
+        editUserById,
         singIn,
         user,
         isAuthenticated,

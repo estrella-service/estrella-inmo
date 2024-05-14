@@ -27,6 +27,9 @@ import BookingTable from './components/admin/BookingTable';
 import PrivacyPolicy from './components/AvisoLegal';
 import TermsAndConditions from './components/TermsAndConditions';
 import Footer from './components/Footer';
+import ProfilePanelPage from './pages/ProfilePanelPage';
+import MyProfileDashboard from './components/profile/MyProfileDashboard';
+import UserReservations from './components/profile/UserReservations';
 
 function App() {
   return (
@@ -77,7 +80,6 @@ function App() {
             path='/property/:id'
             element={<PropertyPage />}
           />
-
           <Route
             path='/reservar/:id'
             element={<ReservationForm />}
@@ -132,6 +134,18 @@ function App() {
             />
           </Route>
           {/* Admin Panel Routes END */}
+          <Route
+            path='/profile-panel'
+            element={<ProfilePanelPage />}>
+            <Route
+              index
+              element={<MyProfileDashboard />}
+            />
+            <Route
+              path='my-bookings'
+              element={<UserReservations />}
+            />
+          </Route>{' '}
         </Routes>
         <Footer />
       </Router>

@@ -8,6 +8,8 @@ import {
   getAllClients,
   editCurrentUser,
   editPasswordByEmail,
+  resetPassworById,
+  editUserById,
 } from '../controllers/user.controller.js';
 import { loginSchema, registerSchema } from '../schemas/user.schema.js';
 
@@ -26,5 +28,9 @@ router.get('/', getAllClients);
 router.patch('/edit/:id', editCurrentUser);
 
 router.post('/forgot-password', editPasswordByEmail);
+
+router.patch('/reset-password/:id', resetPassworById);
+
+router.patch('/edit-user/:id', editUserById);
 
 export default router;

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 import { useModal } from '../hooks/use-modal-store';
+import UserButton from './UserButton';
 
 const Navbar = () => {
   //TODO: Add the name and surname of user in the navbar
@@ -62,31 +63,7 @@ const Navbar = () => {
                 <p className='text-sm text-gray-200'>
                   Bienvenido: <em> {user.name}</em>
                 </p>
-                <Link to='/'>
-                  <button
-                    onClick={() => {
-                      logOut();
-                      setIsOpen(false);
-                      navigate('/');
-                    }}>
-                    <p
-                      className='text-gray-200  text-sm py-1 px-2 rounded-md 
-                 hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
-                      LogOut
-                    </p>
-                  </button>
-                </Link>
-                {user.isAdmin && (
-                  <Link to='/admin-panel'>
-                    <button>
-                      <p
-                        className='text-gray-200  text-sm py-1 px-2 rounded-md 
-                 hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
-                        Admin Panel
-                      </p>
-                    </button>
-                  </Link>
-                )}
+                <UserButton />
               </>
             )}
           </div>
@@ -353,6 +330,14 @@ const Navbar = () => {
                     Admin Panel
                   </Link>
                 )}
+                <Link
+                  to='/profile-panel'
+                  className='text-gray-200 block px-3 py-2 rounded-md text-base
+                  font-medium'
+                  onClick={() => setIsOpen(!isOpen)}>
+                  {' '}
+                  User Panel
+                </Link>
               </>
             )}
           </div>
