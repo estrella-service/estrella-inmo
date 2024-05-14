@@ -313,6 +313,22 @@ const Navbar = () => {
 
             {isAuthenticated && (
               <>
+                <Link
+                  to='/profile-panel'
+                  className='text-gray-200 block px-3 py-2 rounded-md text-base
+                  font-medium'
+                  onClick={() => setIsOpen(!isOpen)}>
+                  {' '}
+                  User Panel
+                </Link>
+                {user.isAdmin && (
+                  <Link
+                    to='/admin-panel'
+                    onClick={toggleMenu}
+                    className='text-gray-200 block px-3 py-2 rounded-md text-base font-medium'>
+                    Admin Panel
+                  </Link>
+                )}
                 <button
                   onClick={() => {
                     logOut();
@@ -322,22 +338,6 @@ const Navbar = () => {
                   className='text-gray-200 block w-full text-left px-3 py-2 rounded-md text-base font-medium'>
                   LogOut
                 </button>
-                {user.isAdmin && (
-                  <Link
-                    to='/admin-panel'
-                    onClick={toggleMenu}
-                    className='text-gray-200 block px-3 py-2 rounded-md text-base font-medium'>
-                    Admin Panel
-                  </Link>
-                )}
-                <Link
-                  to='/profile-panel'
-                  className='text-gray-200 block px-3 py-2 rounded-md text-base
-                  font-medium'
-                  onClick={() => setIsOpen(!isOpen)}>
-                  {' '}
-                  User Panel
-                </Link>
               </>
             )}
           </div>
