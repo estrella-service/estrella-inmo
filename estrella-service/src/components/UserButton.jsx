@@ -8,6 +8,7 @@ import { TbLogout } from 'react-icons/tb';
 const UserButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, logOut } = useUser();
+  const [initials, setInitials] = useState('');
   const navigate = useNavigate();
 
   const node = useRef();
@@ -28,10 +29,14 @@ const UserButton = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
+    setInitials(
+      user?.name.charAt(0).toUpperCase() + user?.surname.charAt(0).toUpperCase()
+    );
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+
   return (
     <div
       className='relative group'
@@ -39,7 +44,7 @@ const UserButton = () => {
       <div
         className='bg-gray-200 rounded-full h-8 w-8 p-3 flex items-center justify-center cursor-pointer'
         onClick={() => setIsOpen(!isOpen)}>
-        BG
+        {initials}
       </div>
       {isOpen ? (
         <div
