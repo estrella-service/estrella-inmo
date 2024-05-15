@@ -30,6 +30,7 @@ import Footer from './components/Footer';
 import ProfilePanelPage from './pages/ProfilePanelPage';
 import MyProfileDashboard from './components/profile/MyProfileDashboard';
 import UserReservations from './components/profile/UserReservations';
+import ShowTableComponent from './components/admin/ShowTableComponent';
 
 function App() {
   return (
@@ -98,7 +99,7 @@ function App() {
             element={<AdminPanelPage />}>
             <Route
               index
-              element={<ReservationList />}
+              element={<ShowTableComponent />}
             />
             <Route
               path='houses'

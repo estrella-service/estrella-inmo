@@ -10,7 +10,7 @@ export const Modal = ({ isOpen, onClose, children }) => {
       as={Fragment}>
       <Dialog
         as='div'
-        className='relative z-50'
+        className='relative z-50 '
         onClose={onClose}>
         <Transition.Child
           as={Fragment}
@@ -31,11 +31,12 @@ export const Modal = ({ isOpen, onClose, children }) => {
           />
         </Transition.Child>
 
-        <div className='fixed inset-0 z-10 overflow-y-auto'>
+        <div className='fixed inset-0 z-10 overflow-y-auto max-h-[80%] mt-20 ml-3 mr-3'>
           <div
             className='
               flex 
               min-h-full 
+              
               items-center 
               justify-center 
               p-4 
@@ -74,12 +75,13 @@ export const Modal = ({ isOpen, onClose, children }) => {
                   className='
                     absolute 
                     right-0 
-                    top-0 
-                    hidden 
+                  top-0 
+                 
+                   
                     pr-4 
                     pt-4 
                     sm:block
-                    z-10
+                    z-100
                   '>
                   <button
                     type='button'
