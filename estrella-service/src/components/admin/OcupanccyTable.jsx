@@ -24,14 +24,19 @@ const OccupancyTable = ({ houses, year, month }) => {
         }
       });
       house.reservasId.forEach((reserva) => {
-        const date = new Date(reserva.checkIn);
+        if (!reserva.canceled) {
+          const date = new Date(reserva.checkIn);
 
-        if (date.getFullYear() === year && date.getMonth() === month) {
-          row[date.getDate()] = 'E';
-        }
-        const checkOut = new Date(reserva.checkOut);
-        if (checkOut.getFullYear() === year && checkOut.getMonth() === month) {
-          row[checkOut.getDate()] = 'S';
+          if (date.getFullYear() === year && date.getMonth() === month) {
+            row[date.getDate()] = 'E';
+          }
+          const checkOut = new Date(reserva.checkOut);
+          if (
+            checkOut.getFullYear() === year &&
+            checkOut.getMonth() === month
+          ) {
+            row[checkOut.getDate()] = 'S';
+          }
         }
       });
 
@@ -108,10 +113,7 @@ const OccupancyTable = ({ houses, year, month }) => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute(
-      'download',
-      `ocupacion${getMonthName(month + 1)}${year}.csv`
-    );
+    link.setAttribute('download', `ocupacion${getMonthName(month)}${year}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

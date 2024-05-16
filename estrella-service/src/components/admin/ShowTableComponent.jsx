@@ -51,7 +51,7 @@ const ShowTableComponent = () => {
                 </h1>
                 <p className='mb-4'>
                   Horarios de ocupación de las casas para el mes de{' '}
-                  {getMonthName(month + 1)} del año {year}
+                  {getMonthName(month)} del año {year}
                 </p>
               </div>
               <div className='flex items-center gap-2 w-full'>
