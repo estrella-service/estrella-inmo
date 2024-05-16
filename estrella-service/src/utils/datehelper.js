@@ -1,4 +1,4 @@
-import { eachDayOfInterval, format, getMonth, getDate } from 'date-fns';
+import { eachDayOfInterval, format } from 'date-fns';
 
 // TODO : CREAR UNA FUNCION QUE DETERMINE EL INTERVALO DE 15 DIAS PARA LA SEMANA SANTA DEPENDIENDO DEL AÑO
 function calcularSemanaSanta(año) {
@@ -18,6 +18,28 @@ function calcularSemanaSanta(año) {
   const dia = ((h + l - 7 * m + 114) % 31) + 1;
 
   return { dia: dia, mes: mes }; // Retorna un objeto con el día y mes del domingo de pascua
+}
+function formatoFecha(date) {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function fechasRelacionadasConPascua(año) {
+  const pascua = calcularSemanaSanta(año);
+  const fechaPascua = new Date(año, pascua.mes - 1, pascua.dia);
+
+  const fechaAnterior = new Date(fechaPascua);
+  fechaAnterior.setDate(fechaPascua.getDate() - 8);
+
+  const fechaPosterior = new Date(fechaPascua);
+  fechaPosterior.setDate(fechaPascua.getDate() + 6);
+
+  return {
+    fechaAnterior: formatoFecha(fechaAnterior),
+    fechaPosterior: formatoFecha(fechaPosterior),
+  };
 }
 
 export const getDatesBetween = (start, end) => {
@@ -45,6 +67,10 @@ export const getDayType = (date, reservations) => {
 export const getSeason = (dateStart, dateEnd) => {
   const allDays = getDatesBetween(dateStart, dateEnd);
   let season = [];
+  const getYear = new Date(dateStart).getFullYear();
+  const pascua = fechasRelacionadasConPascua(getYear);
+  let isPascua = getDatesBetween(pascua.fechaAnterior, pascua.fechaPosterior);
+  isPascua.push(pascua.fechaPosterior);
   for (let i = 0; i < allDays.length; i++) {
     const date = new Date(allDays[i]);
 
@@ -62,15 +88,18 @@ export const getSeason = (dateStart, dateEnd) => {
       [3, 4, 8, 9].includes(month) ||
       (month === 5 && day < 29) ||
       (month === 11 && day >= 22) ||
-      (month === 0 && day <= 8) ||
-      (month === 3 && day >= 13 && day <= 20)
+      (month === 0 && day <= 8)
     ) {
       season.push('media');
     }
 
     // Temporada baja: cualquier otra fecha
     season.push('baja');
+    if (isPascua.includes(allDays[i])) {
+      season.push('media');
+    }
   }
+
   return season.includes('alta')
     ? 'alta'
     : season.includes('media')
