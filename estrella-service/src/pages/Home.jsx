@@ -1,13 +1,10 @@
-import comunidadValenciana from '../assets/ComunidadValencianaLogo.png';
 import Carousel from '../components/Carousel';
 import PropertySearch from '../components/PropertySearch';
 import { FaFacebookSquare } from 'react-icons/fa';
-import { ModalProvider } from '../providers/modal-provider';
 
 const Home = () => {
   return (
     <>
-      <ModalProvider />
       <section className='  w-full p-3'>
         <div className='flex w-full items-center justify-center mt-2'>
           <Carousel />

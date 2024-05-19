@@ -38,11 +38,10 @@ const PropertyPage = () => {
   console.log(id);
   useEffect(() => {
     getCurrentHouse(id);
-  }, [id]);
+  }, [id, currentHouse, getCurrentHouse]);
 
   return (
     <>
-      {!currentHouse && <h1>loading...</h1>}
       {currentHouse && (
         <div className='w-full h-full flex flex-col  items-center justify-center p-8 flex-wrap'>
           <div

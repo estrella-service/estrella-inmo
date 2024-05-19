@@ -23,7 +23,7 @@ import EditPropertyForm from './components/admin/EditPropertyForm';
 import UserDetail from './components/admin/UserDetail';
 import ReservationForm from './components/ReservationForm';
 import ReservationDetail from './components/admin/ReservationDetail';
-import BookingTable from './components/admin/BookingTable';
+
 import PrivacyPolicy from './components/AvisoLegal';
 import TermsAndConditions from './components/TermsAndConditions';
 import Footer from './components/Footer';
@@ -31,13 +31,14 @@ import ProfilePanelPage from './pages/ProfilePanelPage';
 import MyProfileDashboard from './components/profile/MyProfileDashboard';
 import UserReservations from './components/profile/UserReservations';
 import ShowTableComponent from './components/admin/ShowTableComponent';
+import { ModalProvider } from './providers/modal-provider';
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
-
+        <ModalProvider />
         <Toaster
           position='top-right'
           richColors
