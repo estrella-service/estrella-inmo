@@ -28,6 +28,7 @@ import { GiResize } from 'react-icons/gi';
 import { FaWalking } from 'react-icons/fa';
 import { RiParkingBoxLine } from 'react-icons/ri';
 import Seasson from '../components/Seasson';
+import { PiPicnicTable } from 'react-icons/pi';
 
 const PropertyPage = () => {
   const { currentHouse, getCurrentHouse } = useHouses();
@@ -111,25 +112,26 @@ const PropertyPage = () => {
                   <LuTrees size={30} />
 
                   {currentHouse.jardin
-                    ? 'Disponde de Jardin '
+                    ? 'Dispone de Jardin '
                     : 'No dispone de Jardin '}
                 </p>
                 {currentHouse.terraza && (
                   <p className='flex items-center gap-2 text-sm md:text-xl p-2 md:p-8'>
-                    Disponde de Terraza
+                    <PiPicnicTable size={30} />
+                    Dispone de Terraza
                   </p>
                 )}
                 <p className='flex items-center gap-2 text-sm md:text-xl p-2 md:p-8'>
                   <MdOutlinePool size={30} />
                   {currentHouse.picina
-                    ? 'Disponde de Picina '
+                    ? 'Dispone de Picina '
                     : 'No dispone de Picina '}
                 </p>
                 <p className='flex items-center gap-2 text-sm md:text-xl p-2 md:p-8'>
                   <GrSatellite size={30} />
 
                   {currentHouse.tvSatelite
-                    ? 'Disponde de TV Satelite '
+                    ? 'Dispone de TV Satelite '
                     : 'No dispone de TV Satelite '}
                 </p>
                 <p className='flex items-center gap-2 text-sm md:text-xl p-2 md:p-8'>

@@ -30,6 +30,7 @@ import DeletePropertieModal from './DeletePropertieModal';
 import Calendar from '../Calendar';
 import { MdOutlineCreateNewFolder } from 'react-icons/md';
 import CreateReservationModal from '../CreateReservationModal';
+import { PiPicnicTable } from 'react-icons/pi';
 
 const HouseDetails = () => {
   const { currentHouse, getCurrentHouse } = useHouses();
@@ -170,25 +171,25 @@ const HouseDetails = () => {
                 <LuTrees size={30} />
 
                 {currentHouse.jardin
-                  ? 'Disponde de Jardin '
+                  ? 'Dispone de Jardin '
                   : 'No dispone de Jardin '}
               </p>
               {currentHouse.terraza && (
                 <p className='flex flex-col md:flex-row items-center gap-2 text-xs md:text-xl md:p-8 p-1'>
-                  Disponde de Terraza
+                  <PiPicnicTable size={30} /> Dispone de Terraza
                 </p>
               )}
               <p className='flex flex-col md:flex-row items-center gap-2 text-xs md:text-xl md:p-8 p-1'>
                 <MdOutlinePool size={30} />
                 {currentHouse.picina
-                  ? 'Disponde de Picina '
+                  ? 'Dispone de Picina '
                   : 'No dispone de Picina '}
               </p>
               <p className='flex flex-col md:flex-row items-center gap-2 text-xs md:text-xl md:p-8 p-1'>
                 <GrSatellite size={30} />
 
                 {currentHouse.tvSatelite
-                  ? 'Disponde de TV Satelite '
+                  ? 'Dispone de TV Satelite '
                   : 'No dispone de TV Satelite '}
               </p>
               <p className='flex flex-col md:flex-row items-center gap-2 text-xs md:text-xl md:p-8 p-1'>
