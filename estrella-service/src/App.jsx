@@ -32,6 +32,8 @@ import MyProfileDashboard from './components/profile/MyProfileDashboard';
 import UserReservations from './components/profile/UserReservations';
 import ShowTableComponent from './components/admin/ShowTableComponent';
 import { ModalProvider } from './providers/modal-provider';
+import FormularioViajeros from './components/ClientTripDetail';
+import CreatePDF from './components/CreatePDF';
 
 function App() {
   return (
@@ -129,6 +131,10 @@ function App() {
             <Route
               path='bookings'
               element={<ReservationList />}
+            />
+            <Route
+              path='pdf-download/:id'
+              element={<CreatePDF />}
             />
             <Route
               path='bookings/:id'

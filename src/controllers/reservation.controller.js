@@ -303,4 +303,37 @@ export const createNewReservationByAdmin = async (req, res) => {
   }
 };
 
+export const createGuestData = async (req, res) => {
+  const { _id } = req.body;
+
+  const newGuest = {
+    nombre: req.body.nombre,
+    primerApellido: req.body.primerApellido,
+    paisNacionalidad: req.body.paisNacionalidad,
+    tipoDocumento: req.body.tipoDocumento,
+    numeroDocumento: req.body.numeroDocumento,
+    fechaExpedicion: req.body.fechaExpedicion,
+    sexo: req.body.sexo,
+    fechaNacimiento: req.body.fechaNacimiento,
+    fechaEntrada: req.body.fechaEntrada,
+  };
+
+  try {
+    const reservation = await Reservation.findById(_id);
+    const viajeros = reservation.viajeros;
+    const updatedReservation = await Reservation.findByIdAndUpdate(
+      _id,
+      { viajeros: [...viajeros, newGuest] },
+      { new: true }
+    );
+    res.status(200).json({
+      message: 'Datos de viajeros añadidos correctamente',
+      updatedReservation,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: 'Error al añadir los datos de los viajeros', error });
+  }
+};
 // Comprobar si esa fecha ya esta ocupada en la casa por

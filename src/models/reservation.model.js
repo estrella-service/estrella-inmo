@@ -87,6 +87,37 @@ const reservationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    viajeros: [
+      {
+        nombre: {
+          type: String,
+        },
+        primerApellido: {
+          type: String,
+        },
+        paisNacionalidad: {
+          type: String,
+        },
+        tipoDocumento: {
+          type: String,
+        },
+        numeroDocumento: {
+          type: String,
+        },
+        fechaExpedicion: {
+          type: String,
+        },
+        sexo: {
+          type: String,
+        },
+        fechaNacimiento: {
+          type: String,
+        },
+        fechaEntrada: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,

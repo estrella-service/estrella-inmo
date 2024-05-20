@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useHouses } from '../../context/houses-context';
 import { MdFormatListNumbered } from 'react-icons/md';
 import clsx from 'clsx';
@@ -8,6 +8,7 @@ const ReservationList = () => {
   const { reservations, setCurrentReservation } = useHouses();
   const [filteredReservations, setFilteredReservations] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
+  const navigate = useNavigate();
   const handleSort = () => {
     const sorted = reservations.sort((a, b) => {
       return new Date(a.checkIn) - new Date(b.checkIn);
@@ -36,7 +37,7 @@ const ReservationList = () => {
       {reservations && (
         <div className='flex flex-col w-full items-center p-2 '>
           <h1 className='font-cinzel text-lg md:text-4xl mb-1 mt-3'>
-            Detalle del Usuario
+            Detalle de las Reservas
           </h1>
           <p
             onClick={() => setShowFilters(!showFilters)}
@@ -130,6 +131,20 @@ const ReservationList = () => {
                             res.accepted && !res.canceled && 'bg-green-500 ',
                             !res.accepted && !res.canceled && 'bg-yellow-500'
                           )}></div>
+                        <p
+                          onClick={() => {
+                            setCurrentReservation(res);
+                            navigate('/admin-panel/pdf-download/' + res._id);
+                          }}
+                          className={clsx(
+                            'text-black  py-2 px-3 rounded-full text-xs ml-3',
+                            res.viajeros?.length < res.guests &&
+                              'bg-yellow-500 text-[#0e2235] cursor-not-allowed',
+                            res.viajeros?.length === res.guests &&
+                              'bg-green-500 text-[#0e2235] cursor-pointer'
+                          )}>
+                          {res.viajeros?.length}
+                        </p>
                       </div>
                       <NavLink
                         to={`/admin-panel/bookings/${res._id}`}
@@ -171,6 +186,20 @@ const ReservationList = () => {
                             res.accepted && !res.canceled && 'bg-green-500 ',
                             !res.accepted && !res.canceled && 'bg-yellow-500'
                           )}></div>
+                        <p
+                          onClick={() => {
+                            setCurrentReservation(res);
+                            navigate('/admin-panel/pdf-download/' + res._id);
+                          }}
+                          className={clsx(
+                            'text-black  py-2 px-3 rounded-full text-xs ml-3',
+                            res.viajeros?.length < res.guests &&
+                              'bg-yellow-500 text-[#0e2235] cursor-not-allowed',
+                            res.viajeros?.length === res.guests &&
+                              'bg-green-500 text-[#0e2235] cursor-pointer'
+                          )}>
+                          {res.viajeros?.length}
+                        </p>
                       </div>
                       <NavLink
                         to={`/admin-panel/bookings/${res._id}`}

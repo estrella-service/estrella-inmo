@@ -4,6 +4,7 @@ import PrivacyPolicyModal from '../components/AvisoLegal';
 import LoginModal from '../components/LoginModal';
 import ForgotPasswordModal from '../components/ForgotPassword';
 import RegisterModal from '../components/RegisterModal';
+import FormularioViajeros from '../components/ClientTripDetail';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -17,6 +18,7 @@ export const ModalProvider = () => {
   }
   return (
     <>
+      <FormularioViajeros />
       <RegisterModal />
       <ForgotPasswordModal />
       <LoginModal />

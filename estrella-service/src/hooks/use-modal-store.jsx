@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 
 export const useModal = create((set) => ({
-  data: {},
+  modalData: {},
   type: null,
   isOpen: false,
-  onOpen: (type) => set({ isOpen: true, type }),
+  onOpen: (type, modalData = {}) => set({ isOpen: true, type, modalData }),
   onClose: () => set({ type: null, isOpen: false }),
 }));

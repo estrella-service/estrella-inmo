@@ -14,3 +14,6 @@ export const editReservationDatesRequest = (reservation) =>
 
 export const createReservationByAdminRequest = (newReservation) =>
   axios.post(`/reservations/new-reservation-admin`, newReservation);
+
+export const createGuestDataRequest = (newGuest) =>
+  axios.post(`/reservations/new-guest`, newGuest);

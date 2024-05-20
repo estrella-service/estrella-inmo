@@ -146,7 +146,6 @@ const createReservationEmail = (body) => {
     <p>Check-in: ${body.checkIn}</p>
     <p>Check-out: ${body.checkOut}</p>
     <p>Guests: ${body.guests}</p>
-    <p>Total price: ${body.totalPrice}€</p>
     <p>Phone: ${body.phone}</p>
     <p>Comments: ${body.comments}</p>
     <p>Your reference for this reservation is: ${body.refId}</p>
@@ -173,7 +172,7 @@ export async function sendReservationModification(body) {
 
 const createModificationEmail = (body) => {
   const text = body.accepted
-    ? 'Your reservation has been accepted. Our team will send to you a form for guest details.'
+    ? 'Your reservation has been accepted. Please fill guests details on your Users panel, My Reservations. .'
     : 'Your reservation has been canceled, please contact us for more information.';
 
   return `
@@ -231,7 +230,6 @@ const createModificationEmail = (body) => {
     <p>Check-in: ${body.checkIn}</p>
     <p>Check-out: ${body.checkOut}</p>
     <p>Guests: ${body.guests}</p>
-    <p>Total price: ${body.totalPrice}€</p>
     <p>Phone: ${body.phone}</p>
     <p>Comments: ${body.comments}</p>
     <p>Your reference for this reservation is: ${body.refId}</p>

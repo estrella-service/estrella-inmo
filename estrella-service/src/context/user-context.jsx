@@ -171,6 +171,28 @@ export const UserProvider = ({ children }) => {
       setErrors([error.response.data]);
     }
   };
+  const getCurrentUser = async () => {
+    try {
+      const response = await verifyTokenRequest();
+      console.log(response, 'veryfyTokenRequest');
+      if (!response.data) {
+        setLoading(false);
+        setIsAuthenticated(false);
+        setUser(null);
+        return;
+      }
+
+      if (response.data.isAdmin) {
+        await getAllClients();
+        await getAllReservations();
+      }
+      setUser(response.data);
+      setIsAuthenticated(true);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -191,6 +213,7 @@ export const UserProvider = ({ children }) => {
         setCurrentClient,
         editCurrentUser,
         editPassword,
+        getCurrentUser,
       }}>
       {children}
     </UserContext.Provider>

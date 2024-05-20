@@ -31,7 +31,11 @@ const ReservationDetail = () => {
   }, []);
 
   const handleAcceptReservation = async () => {
-    const data = { _id: currentReservation._id, accepted: true };
+    const data = {
+      _id: currentReservation._id,
+      accepted: true,
+      canceled: false,
+    };
     console.log('Accept Reservation', data);
     try {
       const response = await editReservation(data);
@@ -46,7 +50,11 @@ const ReservationDetail = () => {
     }
   };
   const handleDenyReservation = async () => {
-    const data = { _id: currentReservation._id, canceled: true };
+    const data = {
+      _id: currentReservation._id,
+      canceled: true,
+      accepted: false,
+    };
     console.log('Accept Reservation', data);
     try {
       const response = await editReservation(data);

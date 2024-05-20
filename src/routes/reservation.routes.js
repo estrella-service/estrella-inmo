@@ -5,6 +5,7 @@ import {
   editReservation,
   editReservationDates,
   createNewReservationByAdmin,
+  createGuestData,
 } from '../controllers/reservation.controller.js';
 
 const router = Router();
@@ -18,5 +19,7 @@ router.post('/new-reservation-admin', createNewReservationByAdmin);
 router.post('/edit-reservation/:id', editReservation);
 
 router.post('/edit-dates/:id', editReservationDates);
+
+router.post('/new-guest', createGuestData);
 
 export default router;

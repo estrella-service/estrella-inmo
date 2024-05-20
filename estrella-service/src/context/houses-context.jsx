@@ -7,12 +7,15 @@ import {
   editPropertyRequest,
 } from '../api/properties';
 import {
+  createGuestDataRequest,
   createNewReservationRequest,
   createReservationByAdminRequest,
   editReservationDatesRequest,
   editReservationRequest,
   getAllReservationsRequest,
 } from '../api/reservation';
+
+import { verifyTokenRequest } from '../api/auth';
 
 export const HousesContext = createContext();
 
@@ -171,6 +174,18 @@ export const HousesProvider = ({ children }) => {
       setErrors([error]);
     }
   };
+  const createGuestData = async (data) => {
+    try {
+      const response = await createGuestDataRequest(data);
+      console.log(response, 'response  del Create New Propertie');
+      await verifyTokenRequest();
+
+      return response;
+    } catch (error) {
+      console.log(error);
+      setErrors([error]);
+    }
+  };
 
   return (
     <HousesContext.Provider
@@ -195,6 +210,7 @@ export const HousesProvider = ({ children }) => {
         loading,
         getReservationById,
         editReservationDates,
+        createGuestData,
       }}>
       {children}
     </HousesContext.Provider>
