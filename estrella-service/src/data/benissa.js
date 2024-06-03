@@ -8,6 +8,7 @@ import calaLlobella from '../assets/calaLlobella.png';
 import calaAdvocat from '../assets/calaAdvocat.png';
 import calaBaladrar from '../assets/calaBaladrar.png';
 import miradorPedramala from '../assets/miradorPedramala.png';
+import { title } from 'process';
 
 export const cabeceraBenissa = {
   description: `
@@ -16,6 +17,7 @@ export const cabeceraBenissa = {
 
 Este terreno costero, se encuentra en una de las zonas costeras más bonitas de la Costa Blanca, entre las localidad de Calpe y Moraira, y como no podía ser de otra manera, sus playas son dignas de estar incluidas entre las mejores de la provincia.`,
   image: benissaCabecera,
+  title: 'Qué ver en Benissa',
 };
 
 export const queVerBenissa = [

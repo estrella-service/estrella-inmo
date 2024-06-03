@@ -4,15 +4,15 @@ import { useLocation } from 'react-router-dom';
 
 const Details = () => {
   const location = useLocation();
-  const [isAdminPage, setIsAdminPage] = useState(false);
+  const [isAdminPage, setIsAdminPage] = useState(true);
 
-  useEffect(() => {
-    const isAdminRoute =
-      location.pathname.includes('/admin-panel') ||
-      location.pathname.includes('/profile-panel');
+  // useEffect(() => {
+  //   const isAdminRoute =
+  //     location.pathname.includes('/admin-panel') ||
+  //     location.pathname.includes('/profile-panel');
 
-    setIsAdminPage(isAdminRoute);
-  }, [location]);
+  //   setIsAdminPage(isAdminRoute);
+  // }, [location]);
 
   return (
     <>

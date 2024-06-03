@@ -3,7 +3,11 @@ import Cabecera from '../components/Cabecera';
 import { calpeInfo } from '../data/calpe';
 import { cabeceraCalpe } from '../data/calpe';
 import bannerPenon from '../assets/bannerPeñon.jpg';
+import { useEffect } from 'react';
 const CalpePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className=' w-full p-3 flex flex-col justify-center '>
       <header className='relative p-3'>

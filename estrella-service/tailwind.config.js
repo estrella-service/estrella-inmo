@@ -25,6 +25,9 @@ module.exports = {
         tertiary: 'Barlow Condensed',
         tang: ['Tangerine'],
       },
+      textShadow: {
+        default: '2px 2px 6px rgba(0, 0, 0, 1.5)',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -81,5 +84,21 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')],
+  variants: {
+    extend: {
+      textShadow: ['responsive', 'hover', 'focus'],
+    },
+  },
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/forms'),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 };

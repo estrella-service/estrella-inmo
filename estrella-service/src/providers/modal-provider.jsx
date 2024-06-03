@@ -5,6 +5,7 @@ import LoginModal from '../components/LoginModal';
 import ForgotPasswordModal from '../components/ForgotPassword';
 import RegisterModal from '../components/RegisterModal';
 import FormularioViajeros from '../components/ClientTripDetail';
+import FullImagesModal from '../components/FullImagesModal';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -24,6 +25,7 @@ export const ModalProvider = () => {
       <LoginModal />
       <PrivacyPolicyModal />
       <TermsAndConditionsModal />
+      <FullImagesModal />
     </>
   );
 };

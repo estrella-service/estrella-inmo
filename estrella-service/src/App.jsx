@@ -32,8 +32,10 @@ import MyProfileDashboard from './components/profile/MyProfileDashboard';
 import UserReservations from './components/profile/UserReservations';
 import ShowTableComponent from './components/admin/ShowTableComponent';
 import { ModalProvider } from './providers/modal-provider';
-import FormularioViajeros from './components/ClientTripDetail';
+
 import CreatePDF from './components/CreatePDF';
+import Home2 from './pages/Home2';
+import AllPropertys from './components/AllPropertys';
 
 function App() {
   return (
@@ -50,7 +52,7 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<Home />}
+            element={<Home2 />}
           />
           <Route
             path='/about'
@@ -95,6 +97,10 @@ function App() {
           <Route
             path='/terms-and-conditions'
             element={<TermsAndConditions />}
+          />
+          <Route
+            path='/all-properties'
+            element={<AllPropertys />}
           />
           {/* Admin Panel Routes */}
           <Route

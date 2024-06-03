@@ -29,16 +29,20 @@ import { FaWalking } from 'react-icons/fa';
 import { RiParkingBoxLine } from 'react-icons/ri';
 import Seasson from '../components/Seasson';
 import { PiPicnicTable } from 'react-icons/pi';
+import PropertyImages from '../components/PropertyImages';
 
 const PropertyPage = () => {
   const { currentHouse, getCurrentHouse } = useHouses();
 
-  console.log(currentHouse);
   const { id } = useParams();
   console.log(id);
   useEffect(() => {
     getCurrentHouse(id);
   }, [id, currentHouse, getCurrentHouse]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -51,13 +55,13 @@ const PropertyPage = () => {
               <h1 className=' font-cinzel text-xl md:text-2xl font-semibold text-center mb-2'>
                 {currentHouse?.title}
               </h1>
-
-              <div className='w-full flex justify-center items-center mb-6 md:mb-10'>
-                <CarouselItem image={currentHouse?.image} />
-              </div>
-              <p className='text-lg font-cinzel w-full text-center'>
+              <p className='text-sm md:text-lg font-serif w-full text-center'>
                 {currentHouse?.shortDescription}
               </p>
+              <div className='w-full flex justify-center items-center mb-6 md:mb-10'>
+                {/* <CarouselItem image={currentHouse?.image} /> */}
+                <PropertyImages />
+              </div>
             </div>
           </div>
           {/* This is the CalendarSearch component that was imported at the top of the file */}
@@ -227,22 +231,21 @@ const PropertyPage = () => {
                 </div>
               </div>
               <hr className='w-full border-1 border-gray-600 mt-2 mb-2' />
-
-              <div className='flex flex-col flex-wrap  justify-center w-full'>
-                <p className='font-serif md:text-xl text-lg'>
-                  Precio por temporada
-                </p>
-                <div className='flex items-center justify-center gap-4 text-xl w-full'>
-                  <Seasson
-                    priceLow={currentHouse?.priceLow}
-                    priceMedium={currentHouse?.priceMedium}
-                    priceHigh={currentHouse?.priceHigh}
-                  />
-                </div>
-              </div>
             </div>{' '}
             <div className='md:w-[30%] w-full'>
               <CalendarSearch villa={currentHouse} />
+            </div>
+          </div>
+          <div className='flex flex-col flex-wrap  justify-center w-full'>
+            <p className='font-serif md:text-xl text-lg'>
+              Precio por temporada
+            </p>
+            <div className='flex items-center justify-center gap-4 text-xl w-full'>
+              <Seasson
+                priceLow={currentHouse?.priceLow}
+                priceMedium={currentHouse?.priceMedium}
+                priceHigh={currentHouse?.priceHigh}
+              />
             </div>
           </div>
         </div>

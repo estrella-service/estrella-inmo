@@ -3,7 +3,11 @@ import Cabecera from '../components/Cabecera';
 import { cabeceraMoraira, queVerMoraira } from '../data/moraira';
 
 import moraira from '../assets/altea.png';
+import { useEffect } from 'react';
 const MorairaPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className=' w-full p-3 flex flex-col justify-center '>
       <header className='relative p-3'>

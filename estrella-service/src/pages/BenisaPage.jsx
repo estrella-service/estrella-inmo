@@ -2,8 +2,12 @@ import Article from '../components/Article';
 import Cabecera from '../components/Cabecera';
 import { cabeceraBenissa, queVerBenissa } from '../data/benissa';
 import benissa from '../assets/benissa.png';
+import { useEffect } from 'react';
 
 const BenisaPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className=' w-full p-3 flex flex-col justify-center '>
       <header className='relative p-3'>

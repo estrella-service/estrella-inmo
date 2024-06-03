@@ -11,6 +11,7 @@ export const cabeceraMoraira = {
   description: `Ubicado en la comarca de la Marina Alta, este municipio está formado por dos núcleos de población: uno situado en el interior (Teulada) y otro en la costa (Moraira), este último es el más turístico y al que dedicaremos este post.
 Hay que tener en cuenta que Moraira triplica su población en verano (la gran mayoría extranjeros) atraídos por sus fantásticas playas, su coqueto casco antiguo y su excelente gastronomía con el arroz como plato estrella.
 Aunque con medio día es suficiente para disfrutar de todas sus reclamos turísticos, si vienes en verano te aconsejamos dedicar más tiempo en algunas de sus playas y calas o hacer excursiones de un día a otras poblaciones llenas de encanto de la provincia de Alicante como Calpe, Jávea y Altea.`,
+  title: 'Qué ver en Moraira',
 };
 
 export const queVerMoraira = [

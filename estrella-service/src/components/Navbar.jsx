@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       <nav
         className='w-full md:flex items-center justify-between p-3 gap-3 bg-[#0e2235] border-b-2 border-gray-300 hidden  
-      sticky top-0 right-0 z-10 '>
+      sticky top-0 right-0 z-30 '>
         <div className='flex flex-col items-center justify-center z-20'>
           <Link to='/'>
             <div className='flex items-center justify-center gap-3'>
@@ -69,47 +69,6 @@ const Navbar = () => {
           </div>
 
           <div className='flex flex-wrap items-center justify-center gap-3 text-center '>
-            <div className='relative group'>
-              <button
-                className='py-1 px-2 hover:rounded-md text-sm w-full text-gray-200 rounded-md 
-           hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400 whitespace-nowrap  '>
-                Sitios de Interes
-              </button>
-              <ul
-                className=' group absolute top-7 left-0 hidden group-hover:block w-full rounded-md bg-white text-sm
-            hover:text-gray-800 z-10'>
-                <li
-                  className=' hover:bg-gray-300 p-1 '
-                  onClick={() => navigate('/visit-moraira')}>
-                  Moraria
-                </li>
-                <hr />
-                <li
-                  onClick={() => navigate('/visit-benissa')}
-                  className=' hover:bg-gray-300 p-1'>
-                  Benisa
-                </li>
-                <hr />
-                <li
-                  onClick={() => navigate('/visit-calpe')}
-                  className=' hover:bg-gray-300 p-1'>
-                  Calpe
-                </li>
-                <hr />
-                <li
-                  onClick={() => navigate('/visit-altea')}
-                  className=' hover:bg-gray-300 p-1'>
-                  Altea
-                </li>
-              </ul>
-            </div>
-            <Link to='/'>
-              <button
-                className=' py-1 px-2  rounded-md text-sm w-full text-gray-200
-           hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
-                Home
-              </button>
-            </Link>{' '}
             <Link to='/about'>
               <button
                 className='py-1 px-2 rounded-lg text-sm w-full text-gray-200
@@ -127,7 +86,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <nav className='w-full bg-[#0e2235] border-b-2 border-gray-300 md:hidden block sticky top-0 right-0 z-10'>
+      <nav className='w-full bg-[#0e2235] border-b-2 border-gray-300 md:hidden block sticky top-0 right-0 z-30'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20'>
           <div className='flex justify-between h-16'>
             <div className='flex'>

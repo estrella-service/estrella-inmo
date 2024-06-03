@@ -5,6 +5,7 @@ import OccupancyTable from './OcupanccyTable';
 const ShowTableComponent = () => {
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState(new Date().getMonth() + 1);
+  console.log(year, month, 'year, month', new Date());
   const { houses } = useHouses();
   const handleMonth = (action) => {
     if (action === 'add') {
@@ -51,7 +52,7 @@ const ShowTableComponent = () => {
                 </h1>
                 <p className='mb-4'>
                   Horarios de ocupación de las casas para el mes de{' '}
-                  {getMonthName(month)} del año {year}
+                  {getMonthName(month - 1)} del año {year}
                 </p>
               </div>
               <div className='flex items-center gap-2 w-full'>
@@ -71,7 +72,7 @@ const ShowTableComponent = () => {
               <div className='flex items-center gap-2 w-full'>
                 <div className='flex items-center gap-2'>
                   <p className='text-lg font-bold'>Month:</p>
-                  <p className='text-lg font-bold'>{month + 1}</p>
+                  <p className='text-lg font-bold'>{month}</p>
                   <button
                     onClick={() => handleMonth('substract')}
                     className='w-6 h-6 rounded-md text-center font-bold bg-[#0e2235] text-white'>

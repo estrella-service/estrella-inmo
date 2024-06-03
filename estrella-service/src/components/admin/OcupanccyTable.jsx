@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 const OccupancyTable = ({ houses, year, month }) => {
   const generateMonthlyOccupancyTable = (houses, year, month) => {
-    const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
+    const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
 
     const numDays = daysInMonth(year, month);
     const header = ['CASA/DIA'];
@@ -19,7 +19,7 @@ const OccupancyTable = ({ houses, year, month }) => {
 
       house.busyDays.forEach((dateStr) => {
         const date = new Date(dateStr);
-        if (date.getFullYear() === year && date.getMonth() === month) {
+        if (date.getFullYear() === year && date.getMonth() + 1 === month) {
           row[date.getDate()] = 'x';
         }
       });
@@ -27,13 +27,13 @@ const OccupancyTable = ({ houses, year, month }) => {
         if (!reserva.canceled) {
           const date = new Date(reserva.checkIn);
 
-          if (date.getFullYear() === year && date.getMonth() === month) {
+          if (date.getFullYear() === year && date.getMonth() + 1 === month) {
             row[date.getDate()] = 'E';
           }
           const checkOut = new Date(reserva.checkOut);
           if (
             checkOut.getFullYear() === year &&
-            checkOut.getMonth() === month
+            checkOut.getMonth() + 1 === month
           ) {
             row[checkOut.getDate()] = 'S';
           }
@@ -113,7 +113,10 @@ const OccupancyTable = ({ houses, year, month }) => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `ocupacion${getMonthName(month)}${year}.csv`);
+    link.setAttribute(
+      'download',
+      `ocupacion${getMonthName(month - 1)}${year}.csv`
+    );
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
