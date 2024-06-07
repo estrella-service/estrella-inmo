@@ -9,6 +9,11 @@ body,
   display: flex;
   flex-direction: column;
 }
+@font-face {
+  font-family: 'vagron';
+  src: url('./assets/VAGRON.TTF');
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

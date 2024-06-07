@@ -24,6 +24,7 @@ module.exports = {
         secondary: 'Barlow',
         tertiary: 'Barlow Condensed',
         tang: ['Tangerine'],
+        vagron: ['Vagron'],
       },
       textShadow: {
         default: '2px 2px 6px rgba(0, 0, 0, 1.5)',

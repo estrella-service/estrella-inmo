@@ -37,7 +37,7 @@ const Navbar = () => {
                 alt='LOGO'
               />
               <div>
-                <p className='text-gray-200 font-bold whitespace-nowrap font-cinzel'>
+                <p className='text-gray-200 font-bold whitespace-nowrap font-vagron text-2xl'>
                   <em>Estrella Service</em>
                 </p>
                 <p className='text-gray-400 text-[12px]'>
