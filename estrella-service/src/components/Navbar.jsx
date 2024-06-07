@@ -53,7 +53,7 @@ const Navbar = () => {
               <button onClick={() => onOpen('login-form')}>
                 <p
                   className='text-gray-200  text-sm py-1 px-2 rounded-md 
-                 hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
+                 hover:bg-gray-300 hover:text-gray-800 shadow-sm '>
                   SignIn
                 </p>
               </button>
@@ -68,18 +68,25 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className='flex flex-wrap items-center justify-center gap-3 text-center '>
+          <div className='flex flex-wrap items-center justify-center gap-3 text-center   '>
+            <Link to='/'>
+              <button
+                className='py-1 px-2 rounded-lg text-sm w-full text-gray-200
+           hover:bg-gray-300 hover:text-gray-900 shadow-sm transition-all duration-300'>
+                Home
+              </button>
+            </Link>{' '}
             <Link to='/about'>
               <button
                 className='py-1 px-2 rounded-lg text-sm w-full text-gray-200
-           hover:bg-gray-300 hover:text-gray-900 shadow-sm shadow-slate-400'>
+           hover:bg-gray-300 hover:text-gray-900 shadow-sm transition-all duration-300'>
                 AboutUs
               </button>
             </Link>{' '}
             <Link to='/contact'>
               <button
                 className=' py-1 px-2 text-sm w-full text-gray-200
-           rounded-lg hover:bg-gray-300 hover:text-gray-800 shadow-sm shadow-slate-400'>
+           rounded-lg hover:bg-gray-300 hover:text-gray-800 shadow-sm transition-all duration-300'>
                 Contacto
               </button>
             </Link>{' '}
