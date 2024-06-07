@@ -100,7 +100,7 @@ const Navbar = () => {
                     alt='LOGO'
                   />
                   <div className=''>
-                    <p className=' font-bold text-gray-200 text-sm whitespace-nowrap font-cinzel'>
+                    <p className=' font-bold text-gray-200  whitespace-nowrap font-vagron text-xl'>
                       <em>Estrella Service</em>
                     </p>
                     <p className='text-gray-500 text-[10px]'>
